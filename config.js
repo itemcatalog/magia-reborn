@@ -10,7 +10,7 @@
 // (os dados ficam só no navegador, bom para testar o visual).
 // ============================================================
 window.APP_CONFIG={
-  supabaseUrl:'https://mbjwbqphsjwogquekxhf.supabase.co/rest/v1/',          // ex.: https://abcdefgh.supabase.co
+  supabaseUrl:'supabaseUrl:'https://mbjwbqphsjwogquekxhf.supabase.co',',          // ex.: https://abcdefgh.supabase.co
   supabaseKey:'sb_publishable_b9r3qlfhlGHtYRI0ehPLvA_eOkT27Q8',       // começa com sb_publishable_...
   bucket:'fotos'
 };
