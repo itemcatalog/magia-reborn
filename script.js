@@ -320,7 +320,9 @@
       try{
         var r=await be.entrar(mail,pass);
         if(r==='ok'){location.reload();return}
-        $('lgErr').textContent=r==='nao_admin'?'Esta conta não tem acesso de administradora.':'E-mail ou senha incorretos.';
+        $('lgErr').textContent=r==='nao_admin'?'Esta conta não tem acesso de administradora.'
+          :r==='erro'?'Não foi possível falar com o Supabase. Confira a URL e a chave no config.js.'
+          :'E-mail ou senha incorretos.';
       }catch(e){$('lgErr').textContent='Não foi possível entrar agora. Tente de novo.'}
       $('lgOk').disabled=false;
     }
@@ -329,7 +331,26 @@
   }
   function supaConfigurado(){
     var c=window.APP_CONFIG;
-    return !!(c&&/^https:\/\//.test(c.supabaseUrl||'')&&c.supabaseKey&&c.supabaseKey.indexOf('COLE_AQUI')!==0);
+    return !!(c&&/^https:\/\//.test(String(c.supabaseUrl||'').trim())&&c.supabaseKey&&String(c.supabaseKey).trim().indexOf('COLE_AQUI')!==0);
+  }
+
+  // explica na tela por que o site caiu no modo local (só aparece quando o site está publicado na internet)
+  function diagnostico(){
+    if(window.__cfgErro)return window.__cfgErro;
+    var c=window.APP_CONFIG;
+    if(!c)return 'o config.js foi lido, mas não define APP_CONFIG';
+    var u=String(c.supabaseUrl||'').trim(), k=String(c.supabaseKey||'').trim();
+    if(!u||u.indexOf('COLE_AQUI')===0)return 'a URL do Supabase ainda não foi preenchida no config.js';
+    if(!/^https:\/\//.test(u))return 'a URL no config.js precisa começar com https://';
+    if(!k||k.indexOf('COLE_AQUI')===0)return 'a chave ainda não foi preenchida no config.js';
+    return '';
+  }
+  function mostrarDiagnostico(){
+    if(location.protocol.indexOf('http')!==0)return;
+    var d=document.createElement('div');
+    d.style.cssText='background:#fff3cd;border:1px solid #e6c65c;color:#6b4f00;margin:10px;padding:10px 14px;border-radius:12px;text-align:center;font:.85rem/1.4 system-ui,sans-serif';
+    d.textContent='Modo local: '+(diagnostico()||'não foi possível iniciar a conexão com o Supabase')+'. Os itens não estão sendo salvos no Supabase.';
+    document.body.insertBefore(d,document.body.firstChild);
   }
 
   async function init(){
@@ -357,6 +378,7 @@
       }
     }else{
       // === MODO LOCAL: abrindo o index.html no seu computador ===
+      mostrarDiagnostico();
       // Os dados ficam salvos só neste navegador (bom para testar o visual).
       db=localDb(); assets=localAssets(); isAdmin=true;
       setTimeout(function(){toast('Modo local: os dados ficam só neste navegador')},600);

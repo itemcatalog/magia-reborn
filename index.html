@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Magia Reborn</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<symbol id="star5" viewBox="-10 -10 20 20"><path d="M0.00,-9.00 L2.53,-3.48 L8.56,-2.78 L4.09,1.33 L5.29,7.28 L0.00,4.30 L-5.29,7.28 L-4.09,1.33 L-8.56,-2.78 L-2.53,-3.48Z" fill="currentColor" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+<symbol id="spark" viewBox="-8 -8 16 16"><path d="M0-7C1-1.5 1.5-1 7 0 1.5 1 1 1.5 0 7-1 1.5-1.5 1-7 0-1.5-1-1-1.5 0-7Z" fill="currentColor"/></symbol>
+<symbol id="moon" viewBox="-10 -10 20 20"><mask id="mm"><rect x="-10" y="-10" width="20" height="20" fill="#fff"/><circle cx="4.2" cy="-2.2" r="7.4" fill="#000"/></mask><circle r="8.6" fill="currentColor" mask="url(#mm)"/></symbol>
+<symbol id="sprig" viewBox="0 0 84 44"><g fill="currentColor"><path d="M78,32 Q42,36 4,10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><ellipse cx="64.7" cy="36.3" rx="6.6" ry="2.6" transform="rotate(141.4 64.7 36.3)"/><ellipse cx="64.6" cy="28.9" rx="6.6" ry="2.6" transform="rotate(217.4 64.6 28.9)"/><ellipse cx="54.9" cy="35.6" rx="7.0" ry="2.6" transform="rotate(-212.8 54.9 35.6)"/><ellipse cx="55.6" cy="27.8" rx="7.0" ry="2.6" transform="rotate(-136.8 55.6 27.8)"/><ellipse cx="45.2" cy="33.8" rx="7.3" ry="2.6" transform="rotate(-207.1 45.2 33.8)"/><ellipse cx="46.8" cy="25.9" rx="7.3" ry="2.6" transform="rotate(-131.1 46.8 25.9)"/><ellipse cx="35.7" cy="31.1" rx="7.4" ry="2.6" transform="rotate(-201.7 35.7 31.1)"/><ellipse cx="38.0" cy="23.2" rx="7.4" ry="2.6" transform="rotate(-125.7 38.0 23.2)"/><ellipse cx="26.3" cy="27.3" rx="7.3" ry="2.6" transform="rotate(-196.6 26.3 27.3)"/><ellipse cx="29.2" cy="19.8" rx="7.3" ry="2.6" transform="rotate(-120.6 29.2 19.8)"/><ellipse cx="17.0" cy="22.6" rx="7.1" ry="2.6" transform="rotate(-191.9 17.0 22.6)"/><ellipse cx="20.5" cy="15.6" rx="7.1" ry="2.6" transform="rotate(-115.9 20.5 15.6)"/><ellipse cx="7.9" cy="17.1" rx="6.7" ry="2.6" transform="rotate(-187.6 7.9 17.1)"/><ellipse cx="11.6" cy="10.7" rx="6.7" ry="2.6" transform="rotate(-111.6 11.6 10.7)"/><ellipse cx="0.7" cy="7.7" rx="5.5" ry="2.4" transform="rotate(-145.6 0.7 7.7)"/></g></symbol>
+<symbol id="ribbon" viewBox="0 0 320 56">
+ <path d="M0,14 H46 V52 H0 L14,33Z" fill="#e79db3"/><path d="M320,14 H274 V52 H320 L306,33Z" fill="#e79db3"/>
+ <path d="M34,44 L46,52 V44Z" fill="#c77990"/><path d="M286,44 L274,52 V44Z" fill="#c77990"/>
+ <rect x="26" y="4" width="268" height="40" rx="3" fill="#f6bccb"/>
+ <rect x="26" y="4" width="268" height="14" rx="3" fill="#fbd2dc" opacity=".75"/>
+ <path d="M32,9 H288" stroke="#fff" stroke-width="1" stroke-dasharray="2 4" opacity=".9" fill="none"/>
+ <path d="M32,39 H288" stroke="#fff" stroke-width="1" stroke-dasharray="2 4" opacity=".9" fill="none"/>
+</symbol>
+</defs></svg>
+<header>
+  <svg class="sp g s1"><use href="#star5"/></svg><svg class="sp p s2"><use href="#star5"/></svg><svg class="sp b s3"><use href="#star5"/></svg><svg class="sp w s4"><use href="#spark"/></svg><svg class="sp g s5"><use href="#spark"/></svg><svg class="sp p s6"><use href="#spark"/></svg><svg class="sp b s7"><use href="#spark"/></svg><svg class="sp w s8"><use href="#star5"/></svg><svg class="sp g s9"><use href="#star5"/></svg><svg class="sp p s10"><use href="#spark"/></svg>
+  <div class="hero">
+    <h1 id="title" style="line-height:0"><img class="logo" alt="Magia Reborn" src="logo.webp"></h1>
+    
+  </div>
+  <div style="display:flex;gap:8px"><button id="cfgBtn" style="display:none">Configurações</button><button class="pri" id="addBtn" style="display:none">+ Adicionar item</button></div>
+</header>
+<div class="orn" aria-hidden="true"><i></i><svg class="ic b"><use href="#spark"/></svg><svg class="ic g sm"><use href="#star5"/></svg><svg class="ic m"><use href="#moon"/></svg><svg class="ic g lg"><use href="#star5"/></svg><svg class="ic p sm"><use href="#star5"/></svg><svg class="ic b"><use href="#spark"/></svg><i></i></div>
+<main>
+  <div class="sect"><svg class="lf" aria-hidden="true"><use href="#sprig"/></svg><div class="rib"><svg viewBox="0 0 320 56" aria-hidden="true"><use href="#ribbon"/></svg><h2>Nossa vitrine</h2></div><svg class="lf r" aria-hidden="true"><use href="#sprig"/></svg></div>
+  <div class="chips" id="chips"></div>
+  <div class="grid" id="grid"></div>
+  <div class="empty" id="empty" style="display:none">Nenhum item na vitrine ainda. ✦</div>
+</main>
+<footer class="ft"><div class="orn" aria-hidden="true"><i></i><svg class="ic b"><use href="#spark"/></svg><svg class="ic g sm"><use href="#star5"/></svg><svg class="ic m"><use href="#moon"/></svg><svg class="ic g lg"><use href="#star5"/></svg><svg class="ic p sm"><use href="#star5"/></svg><svg class="ic b"><use href="#spark"/></svg><i></i></div>Magia Reborn by Amanda Muniz · Fazendo sonhos tornar-se realidade<div class="admin-link"><a href="#" id="admLink" style="display:none">Área da administradora</a></div></footer>
+
+<div class="ov" id="ov">
+  <div class="modal">
+    <h2 id="mt">Novo item</h2>
+    <label for="f">Fotos (a primeira é a capa)</label>
+    <input type="file" id="f" accept="image/*" multiple>
+    <div class="thumbs" id="thumbs"></div>
+    <label for="n">Nome</label>
+    <input type="text" id="n" maxlength="80">
+    <label for="c">Legenda</label>
+    <textarea id="c" maxlength="400"></textarea>
+    <label for="p">Preço (R$), opcional</label>
+    <input type="text" id="p" inputmode="decimal" placeholder="Ex.: 49,90">
+    <label for="w">Mensagem do WhatsApp deste item, opcional</label>
+    <textarea id="w" maxlength="500" placeholder="Ex.: Olá! Quero encomendar o {nome} ({preco}). Está disponível?"></textarea>
+    <div class="hint">Use <b>{nome}</b>, <b>{preco}</b> e <b>{categoria}</b> para preencher automaticamente. Em branco = mensagem padrão.</div>
+    <label for="k">Categoria</label>
+    <select id="k"></select>
+    <button type="button" class="lnk" id="newCatQuick">+ Criar nova categoria</button>
+    <div class="err" id="err"></div>
+    <div class="row">
+      <button id="cancel">Cancelar</button>
+      <button class="pri" id="save">Salvar</button>
+    </div>
+  </div>
+</div>
+<div class="ov" id="dt">
+  <div class="modal dt">
+    <button class="x" id="dtX" aria-label="Fechar">×</button>
+    <div class="gal"><img id="dtImg" alt=""><button class="nav prv" id="dtP" aria-label="Foto anterior">‹</button><button class="nav nxt" id="dtN" aria-label="Próxima foto">›</button></div>
+    <div class="ths" id="dtTh"></div>
+    <h2 id="dtName"></h2>
+    <div class="price" id="dtPrice"></div>
+    <p class="cap" id="dtCap"></p>
+    <div id="dtWa"></div>
+  </div>
+</div>
+<div class="ov" id="cfg">
+  <div class="modal">
+    <h2>Configurações</h2>
+    <label>Categorias</label>
+    <div id="catList"></div>
+    <div style="display:flex;gap:8px;margin-top:10px"><input type="text" id="newCat" maxlength="40" placeholder="Nova categoria"><button class="pri" id="addCat">Adicionar</button></div>
+    <label for="wa">WhatsApp (DDI + DDD + número, só dígitos)</label>
+    <input type="text" id="wa" inputmode="numeric" placeholder="5517999999999">
+    <div class="err" id="cerr"></div>
+    <div class="row"><button id="cfgClose">Fechar</button><button class="pri" id="saveWa">Salvar WhatsApp</button></div>
+  </div>
+</div>
+
+<div class="ov" id="lg">
+  <div class="modal" style="max-width:360px">
+    <h2>Área da administradora</h2>
+    <label for="lgMail">E-mail</label>
+    <input type="text" id="lgMail" inputmode="email" autocomplete="username" autocapitalize="none" spellcheck="false">
+    <label for="lgPass">Senha</label>
+    <input type="password" id="lgPass" autocomplete="current-password">
+    <div class="err" id="lgErr"></div>
+    <div class="row"><button id="lgCancel">Cancelar</button><button class="pri" id="lgOk">Entrar</button></div>
+  </div>
+</div>
+
+<div id="toast"></div>
+<div class="ov" id="cf" style="z-index:30"><div class="modal" style="max-width:340px"><p id="cfm" style="margin:0 0 4px"></p><div class="row"><button id="cfNo">Cancelar</button><button class="pri" id="cfYes">Excluir</button></div></div></div>
+<!-- Supabase (banco de dados, fotos e login). Versão fixa de propósito. -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.93.0/dist/umd/supabase.js"></script>
+<script>
+  // guarda o motivo caso o config.js não carregue (o site mostra isso na tela, no modo local)
+  window.__cfgErro='';
+  window.addEventListener('error',function(e){if(e.filename&&/config\.js/.test(e.filename))window.__cfgErro='o config.js tem um erro de digitação ('+e.message+')'});
+</script>
+<script src="config.js" onerror="window.__cfgErro='o arquivo config.js não foi encontrado junto do index.html'"></script>
+<script src="supabase-backend.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
