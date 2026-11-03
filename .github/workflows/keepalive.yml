@@ -1,0 +1,51 @@
+# Mantém o banco do Supabase "acordado": o plano gratuito pausa projetos com pouco uso.
+# Todo dia o GitHub faz algumas consultas leves ao banco. Não custa nada.
+name: Manter Supabase ativo
+
+on:
+  schedule:
+    - cron: '17 9 * * *'   # todos os dias, 09:17 (UTC)
+  workflow_dispatch:        # permite rodar na mão: aba Actions → Run workflow
+
+permissions:
+  contents: write           # só para o passo 2 (registrar atividade no repositório)
+
+jobs:
+  manter-ativo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 1) Consultar o banco
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+        run: |
+          set -e
+          if [ -z "$SUPABASE_URL" ] || [ -z "$SUPABASE_KEY" ]; then
+            echo "Faltam os segredos SUPABASE_URL e SUPABASE_KEY (Settings → Secrets and variables → Actions)."; exit 1
+          fi
+          BASE="${SUPABASE_URL%/}"; BASE="${BASE%/rest/v1}"   # tolera "/rest/v1" sobrando na URL
+          for tabela in items categories config; do
+            curl --fail --silent --show-error --retry 3 --retry-delay 5 -o /dev/null \
+              "${BASE}/rest/v1/${tabela}?select=id&limit=1" \
+              -H "apikey: ${SUPABASE_KEY}"
+            echo "Consulta em '${tabela}' ok"
+          done
+
+      # O GitHub desliga rotinas agendadas de repositórios públicos parados há 60 dias.
+      # Por isso, se o último registro tiver mais de 30 dias, gravamos um pequeno arquivo.
+      - name: 2) Registrar atividade no repositório (evita o GitHub desligar esta rotina)
+        continue-on-error: true
+        uses: actions/checkout@v7
+      - name: 2b) Gravar data, se necessário
+        continue-on-error: true
+        run: |
+          ultimo=$(git log -1 --format=%ct)
+          agora=$(date +%s)
+          if [ $((agora - ultimo)) -gt 2592000 ]; then
+            date -u +"%Y-%m-%d" > .github/ultimo-ping.txt
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add .github/ultimo-ping.txt
+            git commit -m "Atividade automática para manter a rotina ativa"
+            git push
+          fi
